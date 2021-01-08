@@ -37,10 +37,3 @@ UserInterfaceState.xcuserstate
 ionic.config.json
 package-lock.json
 package.json
-src/components/selector-ambiente/selector-ambiente.ts
-src/shared/bankingServerConstants.ts
-
-# Archivos Google Analytics no modificar
-
-google-services.json
-GoogleService-Info.plist
