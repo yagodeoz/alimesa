@@ -1,0 +1,66 @@
+<ion-header class="osahan-nav">
+  <ion-toolbar>
+     <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+     </ion-buttons>
+     <ion-title>Ejemplo Formulario 1</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding" color="light">
+  <div class="card">
+     <form onsubmit="processForm(event)">
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+           <ion-item>
+              <ion-label position="stacked">
+                 Nombre
+                 <ion-text color="danger">*</ion-text>
+              </ion-label>
+              <ion-input placeholder="Ingrese el nombre" required type="text" oninput="handleFirstNameValue(event)"></ion-input>
+           </ion-item>
+           <ion-item>
+              <ion-label position="stacked">
+                 Dirección
+                 <ion-text color="danger">*</ion-text>
+              </ion-label>
+              <ion-input placeholder="Dirección" required type="text" oninput="handleFirstNameValue(event)"></ion-input>
+           </ion-item>
+           <ion-item>
+              <ion-label position="stacked">
+                 Oficina
+                 <ion-text color="danger">*</ion-text>
+              </ion-label>
+              <ion-input placeholder="Oficina" required type="text" oninput="handleFirstNameValue(event)"></ion-input>
+           </ion-item>
+           <ion-item>
+              <ion-label position="stacked">
+                 Pais
+                 <ion-text color="danger">*</ion-text>
+              </ion-label>
+              <ion-input placeholder="País" required type="text" oninput="handleFirstNameValue(event)"></ion-input>
+           </ion-item>
+        </ion-list>
+        <ion-list>
+           <ion-radio-group allow-empty-selection value="anchovies">
+              <ion-list-header>
+                 <ion-label>Alias</ion-label>
+              </ion-list-header>
+              <ion-item>
+                 <ion-label>JR</ion-label>
+                 <ion-radio slot="end" color="primary" value="Dev"></ion-radio>
+              </ion-item>
+              <ion-item>
+                 <ion-label>Senior</ion-label>
+                 <ion-radio slot="end" color="primary" value="Sr."></ion-radio>
+              </ion-item>
+              <ion-item>
+                 <ion-label>Master</ion-label>
+                 <ion-radio slot="end" color="primary" value="Master"></ion-radio>
+              </ion-item>
+           </ion-radio-group>
+        </ion-list>
+        <div class="ion-padding">
+           <ion-button [routerLink]="['']" expand="block" type="submit" class="ion-no-margin">Guardar</ion-button>
+        </div>
+     </form>
+  </div>
+</ion-content>

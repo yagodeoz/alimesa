@@ -1,0 +1,66 @@
+<ion-header class="osahan-nav">
+  <ion-toolbar>
+     <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+     </ion-buttons>
+     <ion-title>Editar Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding" color="light">
+  <div class="card">
+     <form onsubmit="processForm(event)">
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+           <ion-item>
+              <ion-label position="stacked">
+                 Nombre
+                 <ion-text color="danger">*</ion-text>
+              </ion-label>
+              <ion-input placeholder="Ingrese nombre" required type="text" oninput="handleFirstNameValue(event)"></ion-input>
+           </ion-item>
+           <ion-item>
+              <ion-label position="stacked">
+                 Teléfono
+                 <ion-text color="danger">*</ion-text>
+              </ion-label>
+              <ion-input placeholder="Ingrese Teléfono" required type="number" oninput="handleFirstNameValue(event)"></ion-input>
+           </ion-item>
+           <ion-item>
+              <ion-label position="stacked">
+                 Email 
+                 <ion-text color="danger">*</ion-text>
+              </ion-label>
+              <ion-input placeholder="Ingrese el email" required type="mail" oninput="handleFirstNameValue(event)"></ion-input>
+           </ion-item>
+           <ion-item>
+              <ion-label position="stacked">
+                 Dirección
+                 <ion-text color="danger">*</ion-text>
+              </ion-label>
+              <ion-input placeholder="Ingrese la dirección" required type="text" oninput="handleFirstNameValue(event)"></ion-input>
+           </ion-item>
+        </ion-list>
+        <ion-list>
+           <ion-radio-group allow-empty-selection value="anchovies">
+              <ion-list-header>
+                 <ion-label>Género</ion-label>
+              </ion-list-header>
+              <ion-item>
+                 <ion-label>Masculino</ion-label>
+                 <ion-radio slot="end" color="primary" value="Male"></ion-radio>
+              </ion-item>
+              <ion-item>
+                 <ion-label>Femenino</ion-label>
+                 <ion-radio slot="end" color="primary" value="Female"></ion-radio>
+              </ion-item>
+              <ion-item>
+                 <ion-label>Otros</ion-label>
+                 <ion-radio slot="end" color="primary" value="Others"></ion-radio>
+              </ion-item>
+           </ion-radio-group>
+        </ion-list>
+        <div class="ion-padding">
+           <ion-button [routerLink]="['/myprofile']" expand="block" type="submit" class="ion-no-margin">Guardar</ion-button>
+        </div>
+     </form>
+  </div>
+</ion-content>
