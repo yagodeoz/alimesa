@@ -1,0 +1,7 @@
+{
+  "name": "groccy",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
