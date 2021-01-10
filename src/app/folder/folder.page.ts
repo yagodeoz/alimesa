@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MessagesProvider} from '../messages/messages';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
     selector: 'app-folder',
     templateUrl: './folder.page.html',
-    styleUrls: ['./folder.page.scss'],
+    styleUrls: ['./folder.page.scss']
 })
 export class FolderPage implements OnInit {
     public folder: string;
@@ -15,7 +16,8 @@ export class FolderPage implements OnInit {
     public tituloCategorias: string;
     public botonMas: string;
 
-    constructor(private activatedRoute: ActivatedRoute, private msg: MessagesProvider) {
+    constructor(private activatedRoute: ActivatedRoute, private msg: MessagesProvider,
+                private iab: InAppBrowser) {
         this.mensajeBusqueda = this.msg.get('input_buscar');
         this.tituloApp = this.msg.get('titulo_app');
         this.direccionApp = this.msg.get('direccion_app');
@@ -25,6 +27,11 @@ export class FolderPage implements OnInit {
 
     ngOnInit() {
         this.folder = this.activatedRoute.snapshot.paramMap.get('id');
+    }
+
+    OpenUrl() {
+        const browser = this.iab.create('http://alimesa.com.ec/alimesa');
+        browser.show();
     }
 
 }

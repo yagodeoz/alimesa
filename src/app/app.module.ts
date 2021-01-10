@@ -10,6 +10,7 @@ import {MessagesProvider} from './messages/messages';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {AuthenticationService} from './servicios/authentication.service';
+import { HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +18,8 @@ import {AuthenticationService} from './servicios/authentication.service';
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     StatusBar,

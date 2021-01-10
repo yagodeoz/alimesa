@@ -9,14 +9,14 @@
      <div class="border-bottom text-center p-3">
         <img src="../../assets/login/principal.png" height="82" width="224"/></div>
      <div class="p-3">
-        <form class="card" onsubmit="processForm(event)">
+        <form class="card" >
            <ion-list lines="full" class="ion-no-margin ion-no-padding">
               <ion-item>
                  <ion-label position="stacked">
                     {{formUsuario}}
                     <ion-text color="danger">*</ion-text>
                  </ion-label>
-                 <ion-input placeholder="{{formUsuarioPH}}" required type="text" oninput="handleFirstNameValue(event)"></ion-input>
+                 <ion-input placeholder="{{formUsuarioPH}}" required type="text" autocomplete="off" disable-cut-copy-paste [(ngModel)]="postData.username" name="username"></ion-input>
               </ion-item>
            </ion-list>
            <ion-list lines="full" class="ion-no-margin ion-no-padding">
@@ -25,7 +25,7 @@
                     {{formClave}}
                     <ion-text color="danger">*</ion-text>
                  </ion-label>
-                 <ion-input placeholder="{{formClavePH}}" required type="password" oninput="handleFirstNameValue(event)"></ion-input>
+                 <ion-input placeholder="{{formClavePH}}" required type="password" autocomplete="off" disable-cut-copy-paste [(ngModel)]="postData.password" name="password"></ion-input>
               </ion-item>
            </ion-list>
         </form>
@@ -35,23 +35,3 @@
      </div>
   </div>
 </ion-content>
-<ion-footer>
-  <ion-toolbar>
-     <ion-tabs>
-        <ion-tab-bar slot="bottom">
-           <ion-tab-button [routerLink]="['tab1']" routerDirection="forward">
-              <ion-icon name="person-circle-outline"></ion-icon>
-              <ion-label>Ejemplo Form1</ion-label>
-           </ion-tab-button>
-           <ion-tab-button [routerLink]="['tab2']" routerDirection="forward">
-              <ion-icon name="navigate-circle-outline"></ion-icon>
-              <ion-label>Ejemplo Form2</ion-label>
-           </ion-tab-button>
-           <ion-tab-button [routerLink]="['tab3']" routerDirection="forward">
-              <ion-icon name="checkmark-circle-outline"></ion-icon>
-              <ion-label>Ejemplo Mensaje</ion-label>
-           </ion-tab-button>
-        </ion-tab-bar>
-     </ion-tabs>
-  </ion-toolbar>
-</ion-footer>

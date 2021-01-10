@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {ControlParametrosService} from "../servicios/transversales/control-parametros.service";
 
 @Component({
   selector: 'app-singleproduct',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SingleproductPage implements OnInit {
 
-  constructor() { }
+  item: any;
+
+  constructor(private controlParametros: ControlParametrosService) {
+  }
 
   ngOnInit() {
+    this.item = this.controlParametros.getParametro('prod_item');
+  }
+
+  procesarOrden(){
+    alert('En construcción por falta de definción');
   }
 
 }

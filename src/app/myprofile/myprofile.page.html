@@ -3,11 +3,12 @@
      <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
      </ion-buttons>
-     <ion-title>Mi Perfil
+     <ion-title>Clientes
      </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding my-profile-page" color="light">
+   <ion-searchbar class="p-0 mb-2" placeholder="Buscar Nombre..." ></ion-searchbar>
   <div class="mb-2 card bg-white profile-box text-center">
      <div class="py-4 px-3 border-bottom">
         <img alt="img" class="img-fluid mt-2 rounded-circle" src="assets/user/1.jpg">
@@ -55,9 +56,3 @@
      </a>
   </div>
 </ion-content>
-<ion-footer class="border-0">
-  <ion-button [routerLink]="['']" size="large" class="button-block p-0 m-0" expand="full" color="primary">
-     <ion-icon name="lock-closed-outline"></ion-icon>
-     Salir
-  </ion-button>
-</ion-footer>

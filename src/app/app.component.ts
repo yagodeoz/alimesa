@@ -4,6 +4,7 @@ import {Platform} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {MessagesProvider} from './messages/messages';
+import {ControlaccesologinService} from './servicios/login/controlaccesologin.service';
 
 @Component({
     selector: 'app-root',
@@ -13,13 +14,17 @@ import {MessagesProvider} from './messages/messages';
 export class AppComponent implements OnInit {
     public selectedIndex = 0;
     public appPages: any;
-    public labels = ['Noticia 1', 'Noticia 2', 'Noticia N'];
+    public labels = ['Link 1', 'Link 2', 'Link N'];
+
+    public login: boolean;
+
 
     constructor(
         private platform: Platform,
         private splashScreen: SplashScreen,
         private statusBar: StatusBar,
-        private msg: MessagesProvider
+        private msg: MessagesProvider,
+        private controlAcceso: ControlaccesologinService
     ) {
         this.construccionMenu();
         this.initializeApp();
@@ -110,6 +115,7 @@ export class AppComponent implements OnInit {
 
     initializeApp() {
         this.platform.ready().then(() => {
+            this.login = false;
             this.statusBar.styleDefault();
             this.splashScreen.hide();
         });

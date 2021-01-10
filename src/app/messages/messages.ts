@@ -10,7 +10,7 @@ export class MessagesProvider {
             input_buscar: 'Desea buscar algo?.',
             titulo_app: 'Alimesa',
             direccion_app: 'Km 15 ½ vía a Daule, Av. Rosavín',
-            titulo_categorias: 'Nuestros productos',
+            titulo_categorias: 'Categorias',
             mas: 'Más',
 
             //LOGIN
@@ -23,7 +23,7 @@ export class MessagesProvider {
             //MENU
             titulo_menu_home: 'Principal',
             titulo_menu_productos: 'Productos',
-            titulo_menu_perfil: 'Mi Perfil',
+            titulo_menu_perfil: 'Clientes',
         };
     }
 

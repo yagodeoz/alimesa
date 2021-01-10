@@ -1,51 +1,45 @@
 <ion-header class="osahan-nav">
   <ion-toolbar>
      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
+        <ion-back-button></ion-back-button>
      </ion-buttons>
      <ion-title>Producto
      </ion-title>
-     <ion-buttons [routerLink]="['/shoppingcart']" slot="primary">
-        <ion-button class="top-cart" color="primary">
-           <ion-badge color="primary">3</ion-badge>
-           <ion-icon slot="start" name="cart-outline"></ion-icon>
-        </ion-button>
-     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content class="single-page" color="light">
   <ion-slides pager="true">
      <ion-slide>
-        <img alt="img" class="single-img" src="assets/item/7.jpg">
+        <img alt="img" class="single-img" src="assets/productos/producto.png">
      </ion-slide>
      <ion-slide>
-        <img alt="img" class="single-img" src="assets/item/10.jpg">
+        <img alt="img" class="single-img" src="assets/productos/producto.png">
      </ion-slide>
      <ion-slide>
-        <img alt="img" class="single-img" src="assets/item/9.jpg">
+        <img alt="img" class="single-img" src="assets/productos/producto.png">
      </ion-slide>
   </ion-slides>
   <div class="p-3">
      <div class="mb-2 card p-3 single-page-info">
         <div>
            <div class="single-page-shop">
-              <h5 class="mb-1">Hygienix Anti-Bacterial Hand Sanitizer (Bottle)
+              <h5 class="mb-1">{{item.nombreProd}}
               </h5>
               <small class="text-secondary">
                  <strong>
                     <ion-icon name="checkmark-circle-outline"></ion-icon>
                     Disponible en
                  </strong>
-                 - 500 gr
+                 - N/A PESO
               </small>
               <h6 class="font-weight-bold text-dark mb-3 mt-2">
-                 $456.99 <span class="regular-price text-secondary font-weight-normal">$787.99</span> 
-                 <ion-badge color="success">5% OFF</ion-badge>
+                 {{item.costoPro1 | currency}} <span class="regular-price text-secondary font-weight-normal">{{item.costoPro2 | currency}}</span>
+                 <ion-badge color="success">% DESCUENTO</ion-badge>
               </h6>
               <div class="small text-gray-500 d-flex align-items-center justify-content-between">
                  <div class="text-success">
                     <ion-icon name="star-outline"></ion-icon>
-                    4.4
+                    RANKING
                  </div>
                  <div class="input-group shop-cart-value">
                     <span class="input-group-btn"><button disabled="disabled" class="btn btn-sm" type="button">-</button></span>
@@ -59,9 +53,9 @@
      </div>
      <div class="mb-2 card p-3 single-page-info">
         <div class="short-description">
-           <small class="float-right">Availability: <span class="badge badge-success">En Stock</span></small>
+           <small class="float-right">Disponibilidad: <span class="badge badge-success">En Stock</span></small>
            <h6 class="font-weight-bold mb-3">
-              Quick Overview  
+              Vista Rápida
            </h6>
            <p class="text-secondary"><b>Ideal para:</b> Sudado, frito, al vapor, en salsa de mariscos o al horno
            </p>
@@ -71,13 +65,13 @@
   </div>
 </ion-content>
 <ion-footer class="border-0">
-  <button [routerLink]="['/checkout']" class="btn btn-primary btn-lg btn-block fix-btn text-left" type="button">
+  <button (click)="procesarOrden()"  class="btn btn-primary btn-lg btn-block fix-btn text-left" type="button">
      <span class="float-left">
         <ion-icon name="cart-outline"></ion-icon>
-        Añadir a la cesta
+        + Orden Pedido
      </span>
      <span class="float-right">
-        <strong>$12.69</strong>
+        <strong>$0.0</strong>
         <ion-icon name="arrow-forward-outline"></ion-icon>
      </span>
   </button>

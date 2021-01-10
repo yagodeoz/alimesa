@@ -1,4 +1,8 @@
 import { Injectable } from '@angular/core';
+import {Observable} from "rxjs";
+
+
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 @Injectable({
     providedIn: 'root'
 })
@@ -7,6 +11,8 @@ export class ContextoService {
 
     private servicioProducto = '/ConsultasMBA';
 
+    constructor(private http: HttpClient) {
+    }
 
     getContexto() {
         return this.baseUrlAPI;
@@ -14,5 +20,12 @@ export class ContextoService {
 
     getServicio() {
         return this.servicioProducto;
+    }
+
+    invocacionPost(postData): Observable<any> {
+        const httpOptions = {
+            headers: new HttpHeaders({'Content-Type': 'application/json'})
+        };
+        return this.http.post(`${this.getContexto() + this.getServicio()}`, postData, httpOptions);
     }
 }

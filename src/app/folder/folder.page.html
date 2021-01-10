@@ -7,7 +7,7 @@
         {{tituloApp}}<br><small>{{direccionApp}}</small>
      </ion-title>
   </ion-toolbar>
-  <ion-searchbar class="pt-1" placeholder="{{mensajeBusqueda}}"></ion-searchbar>
+  <ion-searchbar class="pt-1" placeholder="{{mensajeBusqueda}}" ></ion-searchbar>
 </ion-header>
 <ion-content color="light">
   <div class="homepage-slider">
@@ -33,17 +33,17 @@
      <ion-grid>
         <ion-row>
            <ion-col>
-              <h5 class="mb-3 d-flex align-items-center">
+              <h5 class="mb-3 d-flex align-items-center" style="color: white">
                  {{tituloCategorias}}
-                 <ion-button size="small" [routerLink]="['/categories']" class="ios button button-small ml-auto">{{botonMas}}</ion-button>
+                 <ion-button size="small" class="ios button button-small ml-auto" (click)='OpenUrl();' >{{botonMas}}</ion-button>
               </h5>
-              <div [routerLink]="['/singleproduct']" class="d-flex p-3 shop-cart-item bg-white mb-2">
+              <div  class="d-flex p-3 shop-cart-item bg-white mb-2">
                     <img alt="img" class="not-found-img" src="assets/small/gama_exportacion.jpg">
               </div>
-              <div [routerLink]="['/singleproduct']" class="d-flex p-3 shop-cart-item bg-white mb-2">
+              <div  class="d-flex p-3 shop-cart-item bg-white mb-2">
                  <img alt="img" class="not-found-img" src="assets/small/gama_premium.jpg">
               </div>
-              <div [routerLink]="['/singleproduct']" class="d-flex p-3 shop-cart-item bg-white mb-0">
+              <div  class="d-flex p-3 shop-cart-item bg-white mb-0">
                  <img alt="img" class="not-found-img" src="assets/small/gama_tipica.jpg">
               </div>
            </ion-col>
