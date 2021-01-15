@@ -3,11 +3,11 @@ import {ActivatedRoute} from "@angular/router";
 import {ControlParametrosService} from "../servicios/transversales/control-parametros.service";
 
 @Component({
-  selector: 'app-singleproduct',
-  templateUrl: './singleproduct.page.html',
-  styleUrls: ['./singleproduct.page.scss'],
+  selector: 'app-producto',
+  templateUrl: './producto.page.html',
+  styleUrls: ['./producto.page.scss'],
 })
-export class SingleproductPage implements OnInit {
+export class ProductoPage implements OnInit {
 
   item: any;
 

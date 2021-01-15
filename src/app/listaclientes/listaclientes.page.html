@@ -3,28 +3,34 @@
      <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
      </ion-buttons>
-     <ion-title>Lista Productos
+     <ion-title>Lista Clientes
      </ion-title>
+      <ion-buttons  slot="primary">
+          <ion-button>
+              <ion-icon slot="icon-only" name="add"></ion-icon>
+          </ion-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding order-list-page" color="light">
-  <ion-searchbar class="p-0 mb-2" placeholder="Buscar Nombre..." (ionBlur)="checkBlur($event)"
+  <ion-searchbar class="p-0 mb-2" placeholder="Buscar Nombre..."  #buscadorCliente
+                 [animated]="true" (keyup.enter)="buscarCliente(buscadorCliente.value)"
   ></ion-searchbar>
 
-   <div *ngIf="listaProductos">
-  <div (click)="procesarProducto(item)"  class="d-flex p-3 shop-cart-item bg-white mb-2"
-   *ngFor=" let item of listaProductos "
+   <div *ngIf="listaClientes">
+  <div (click)="procesarCliente(item)"  class="d-flex p-3 shop-cart-item bg-white mb-2"
+   *ngFor=" let item of listaClientes "
   >
      <div class="shop-cart-left">
-        <img alt="img" class="not-found-img" src="assets/productos/producto.png">
+        <img alt="img" class="not-found-img" src="assets/cliente/cliente.png">
      </div>
      <div class="shop-cart-right">
-        <h6 class="font-weight-bold text-dark mb-2 price">{{item.costoPro1 | currency}}
-           <span class="regular-price text-secondary font-weight-normal">{{item.costoPro2 | currency}}</span></h6>
-        <div class="mb-2">{{item.nombreProd}}
+        <h6 class="font-weight-bold text-dark mb-2 price">{{item.IDENTIFICACION_FISCAL}}
+           <span class="regular-price text-secondary font-weight-normal">{{item.ORIGIN}}</span></h6>
+        <div class="mb-2">{{item.NOMBRE_CLIENTE}}
         </div>
         <div class="small text-gray-500 d-flex align-items-center justify-content-between">
-           <small class="text-secondary">{{item.idPro}}</small>
+           <small class="text-secondary">{{item.CODIGO_CLIENTE}}</small>
            <div class="input-group shop-cart-value">
               <span class="input-group-btn"><button disabled="disabled"  style="background: white" class="btn btn-sm" type="button"></button></span>
               <input type="text" max="10" min="1" value="" class="form-control border-form-control form-control-sm input-number" name="quant[1]">

@@ -25,7 +25,9 @@
                     {{formClave}}
                     <ion-text color="danger">*</ion-text>
                  </ion-label>
-                 <ion-input placeholder="{{formClavePH}}" required type="password" autocomplete="off" disable-cut-copy-paste [(ngModel)]="postData.password" name="password"></ion-input>
+                 <ion-input placeholder="{{formClavePH}}" required type="password" autocomplete="off" disable-cut-copy-paste [(ngModel)]="postData.password" name="password"
+                            (keyup.enter)="login()"
+                 ></ion-input>
               </ion-item>
            </ion-list>
         </form>

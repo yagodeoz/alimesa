@@ -1,0 +1,71 @@
+<ion-header class="osahan-nav">
+  <ion-toolbar>
+     <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+     </ion-buttons>
+     <ion-title>Cliente
+     </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding my-profile-page" color="light">
+  <div class="mb-2 card bg-white profile-box text-center">
+     <div class="py-4 px-3 border-bottom">
+        <img alt="img" class="img-fluid mt-2 rounded-circle" src="assets/cliente/cliente.png">
+        <h5 class="font-weight-bold text-dark mb-1 mt-4">{{item.NOMBRE_CLIENTE}}</h5>
+        <p class="mb-0 text-muted">{{item.IDENTIFICACION_FISCAL}}</p>
+        <p class="mb-0 text-muted">{{item.CODIGO_CLIENTE}}</p>
+     </div>
+     <div class="d-flex">
+        <div (click)="noImplementado()" class="col-6 border-right p-3">
+           <h6 class="font-weight-bold text-dark mb-1">
+              <ion-icon name="navigate-circle-outline"></ion-icon>
+           </h6>
+           <p class="mb-0 text-black-50 small">Geolocalización</p>
+        </div>
+        <div (click)="editarCliente()" class="col-6 p-3">
+           <h6 class="font-weight-bold text-dark mb-1">
+              <ion-icon name="person-circle-outline"></ion-icon>
+           </h6>
+           <p class="mb-0 text-black-50 small">Editar</p>
+        </div>
+     </div>
+     <div class="overflow-hidden border-top p-3 d-flex justify-content-between align-items-center">
+        <small class="text-secondary font-weight-bold">
+           <ion-icon name="logo-closed-captioning"></ion-icon>
+           Código Ciudad:
+        </small>
+        <small class="text-primary font-weight-bold">{{item.ORIGIN}}</small>
+     </div>
+     <div class="overflow-hidden border-top p-3 d-flex justify-content-between align-items-center">
+        <small class="text-primary font-weight-bold">{{item.DIRECCION_PRINCIPAL_1}}</small>
+     </div>
+     <div class="overflow-hidden border-top p-3 d-flex justify-content-between align-items-center">
+        <small class="text-secondary font-weight-bold">
+           <ion-icon name="call"></ion-icon>
+           Teléfono:
+        </small>
+        <small class="text-primary font-weight-bold">{{item.TELEFONO}}</small>
+     </div>
+     <div class="overflow-hidden border-top p-3 d-flex justify-content-between align-items-center">
+        <small class="text-secondary font-weight-bold">
+           <ion-icon name="mail"></ion-icon>
+           E-MAIL:
+        </small>
+        <small class="text-primary font-weight-bold">{{item.E_MAIL}}</small>
+     </div>
+  </div>
+  <div class="list-group">
+     <a class="list-group-item list-group-item-action active">
+        <ion-icon class="mr-2" name="person-outline"></ion-icon>
+        Datos Adicionales
+     </a>
+     <a  (click)="noImplementado()"  class="list-group-item list-group-item-action">
+        <ion-icon class="mr-2" name="clipboard"></ion-icon>
+        Ordenes de Pedido
+     </a>
+     <a  (click)="noImplementado()"  class="list-group-item list-group-item-action">
+        <ion-icon class="mr-2" name="cash"></ion-icon>
+        Cobros
+     </a>
+  </div>
+</ion-content>

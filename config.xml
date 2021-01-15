@@ -2,7 +2,7 @@
 <widget id="com.alimesa.ec" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Alimesa</name>
     <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <author email="byronsantiago@gmail.com" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -28,15 +28,16 @@
     <preference name="KeyboardResizeMode" value="ionic" />
     <preference name="android-windowSoftInputMode" value="stateVisible" />
     <preference name="Hostname" value="localhost:8080" />
-    <allow-navigation href="http://localhost:8080/*" />
+    <allow-navigation href="*" />
     <preference name="iosScheme" value="http" />
     <preference name="LogLevel" value="ERROR" />
     <platform name="android">
-        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
-            <application android:networkSecurityConfig="@xml/network_security_config" />
-        </edit-config>
-        <resource-file src="resources/android/xml/network_security_config.xml" target="app/src/main/res/xml/network_security_config.xml" />
         <allow-intent href="market:*" />
+        <access origin="*" />
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+            <application android:usesCleartextTraffic="true" />
+        </edit-config>
+        <allow-navigation href="*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
         <icon density="hdpi" src="resources/android/icon/drawable-hdpi-icon.png" />

@@ -5,6 +5,8 @@ import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {MessagesProvider} from './messages/messages';
 import {ControlaccesologinService} from './servicios/login/controlaccesologin.service';
+import {Router} from "@angular/router";
+import {AuthenticationService} from "./servicios/authentication.service";
 
 @Component({
     selector: 'app-root',
@@ -24,7 +26,9 @@ export class AppComponent implements OnInit {
         private splashScreen: SplashScreen,
         private statusBar: StatusBar,
         private msg: MessagesProvider,
-        private controlAcceso: ControlaccesologinService
+        private controlAcceso: ControlaccesologinService,
+        private router: Router,
+        private auth: AuthenticationService
     ) {
         this.construccionMenu();
         this.initializeApp();
@@ -33,7 +37,7 @@ export class AppComponent implements OnInit {
     construccionMenu() {
         this.appPages = [
             this.getMenuHome(),
-            this.getMenuProfile()
+            //this.getMenuProfile()
         ];
         this.inclusionModulos();
 
@@ -51,12 +55,12 @@ export class AppComponent implements OnInit {
             },
             {
                 title: 'Shop List',
-                url: '/shoplist',
+                url: '/listaproductos',
                 icon: 'grid'
             },
             {
                 title: 'Single Product',
-                url: '/singleproduct',
+                url: '/producto',
                 icon: 'pricetag'
             },
             {
@@ -111,6 +115,7 @@ export class AppComponent implements OnInit {
 
     private inclusionModulos() {
         this.agregarMenuProductos();
+        this.agregarMenuClientes();
     }
 
     initializeApp() {
@@ -133,11 +138,24 @@ export class AppComponent implements OnInit {
         this.appPages.push(this.getMenuProductos());
     }
 
+    private agregarMenuClientes() {
+        //validar roles y demas cosas
+        this.appPages.push(this.getMenuClientes());
+    }
+
     private getMenuProductos() {
         return {
             title: this.msg.get('titulo_menu_productos'),
-            url: '/shoplist',
+            url: '/listaproductos',
             icon: 'grid'
+        };
+    }
+
+    private getMenuClientes() {
+        return {
+            title: this.msg.get('titulo_menu_clientes'),
+            url: '/listaclientes',
+            icon: 'person'
         };
     }
 
@@ -155,5 +173,10 @@ export class AppComponent implements OnInit {
             url: '/myprofile',
             icon: 'person'
         };
+    }
+
+    cerrarSesion(){
+        this.router.navigateByUrl('');
+
     }
 }

@@ -6,11 +6,11 @@ import {Router} from "@angular/router";
 import {ControlParametrosService} from "../servicios/transversales/control-parametros.service";
 
 @Component({
-  selector: 'app-shoplist',
-  templateUrl: './shoplist.page.html',
-  styleUrls: ['./shoplist.page.scss'],
+  selector: 'app-listaproductos',
+  templateUrl: './listaproductos.page.html',
+  styleUrls: ['./listaproductos.page.scss'],
 })
-export class ShoplistPage implements OnInit {
+export class ListaproductosPage implements OnInit {
 
   private postData = {
     id: '1',
@@ -31,12 +31,33 @@ export class ShoplistPage implements OnInit {
   };
 
   listaProductos: any;
+  error: any;
 
   constructor(private loadingService: LoadingService, private servicioProducto: ProductosService,
               private utilMensaje: UtilmensajeService, private router: Router,
               private controlParametros: ControlParametrosService) { }
 
   ngOnInit() {
+    this.listaProductos = null;
+    this.error = null;
+  }
+
+  buscarSearch(valor) {
+    console.log('Ejecutar Evento ' + valor );
+    this.loadingService.loadingPresent('Por favor espere');
+    this.postData.filtro.where = 'P1.PRODUCT_NAME like (\'%' + valor + '%\')';
+    console.log(this.postData);
+    this.servicioProducto.getProductosCriterio(this.postData).subscribe(res => {
+      console.log(res );
+      this.listaProductos = res;
+      this.loadingService.loadingDismiss();
+    }, error => {
+      this.error = JSON.stringify(error) ;
+      this.listaProductos = null;
+      console.log('Error al realizar la consulta ');
+      this.loadingService.loadingDismiss();
+      this.utilMensaje.presentarMensaje('Error al realizar la consulta de productos');
+    });
   }
 
   checkBlur(evt) {
@@ -49,6 +70,7 @@ export class ShoplistPage implements OnInit {
       this.listaProductos = res;
       this.loadingService.loadingDismiss();
     }, error => {
+      this.error = JSON.stringify(error) ;
       this.listaProductos = null;
       console.log('Error al realizar la consulta ');
       this.loadingService.loadingDismiss();
@@ -60,7 +82,7 @@ export class ShoplistPage implements OnInit {
   procesarProducto(item) {
     console.log(item);
     this.controlParametros.setParametro('prod_item', item);
-    this.router.navigate(['/singleproduct'] );
+    this.router.navigate(['/producto'] );
   }
 
 }

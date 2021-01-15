@@ -30,7 +30,7 @@ export class FolderPage implements OnInit {
     }
 
     OpenUrl() {
-        const browser = this.iab.create('http://alimesa.com.ec/alimesa');
+        const browser = this.iab.create('http://alimesa.com.ec/alimesa', '_blank');
         browser.show();
     }
 

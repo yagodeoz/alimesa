@@ -23,7 +23,8 @@ export class MessagesProvider {
             //MENU
             titulo_menu_home: 'Principal',
             titulo_menu_productos: 'Productos',
-            titulo_menu_perfil: 'Clientes',
+            titulo_menu_perfil: 'Mi Perfil',
+            titulo_menu_clientes: 'Clientes',
         };
     }
 

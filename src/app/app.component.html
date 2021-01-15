@@ -23,7 +23,7 @@
             <ion-label>{{ label }}</ion-label>
           </ion-item>
         </ion-list>
-        <ion-button [routerLink]="['']" size="small" class="button-block p-0 m-0" color="primary">
+        <ion-button (click)="cerrarSesion()" size="small" class="button-block p-0 m-0" color="primary">
           <ion-icon name="lock-closed-outline"></ion-icon>
           Salir
         </ion-button>

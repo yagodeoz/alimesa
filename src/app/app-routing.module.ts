@@ -20,12 +20,24 @@ const routes: Routes = [
     loadChildren: () => import('./categories/categories.module').then( m => m.CategoriesPageModule)
   },
   {
-    path: 'shoplist',
-    loadChildren: () => import('./shoplist/shoplist.module').then( m => m.ShoplistPageModule)
+    path: 'listaproductos',
+    loadChildren: () => import('./listaproductos/listaproductos.module').then(m => m.ListaProductosPageModule)
   },
   {
-    path: 'singleproduct',
-    loadChildren: () => import('./singleproduct/singleproduct.module').then( m => m.SingleproductPageModule)
+    path: 'listaclientes',
+    loadChildren: () => import('./listaclientes/listaclientes.module').then(m => m.ListaClientesPageModule)
+  },
+  {
+    path: 'producto',
+    loadChildren: () => import('./producto/producto.module').then(m => m.ProductoPageModule)
+  },
+  {
+    path: 'cliente',
+    loadChildren: () => import('./cliente/cliente.module').then(m => m.ClientePageModule)
+  },
+  {
+    path: 'editcliente',
+    loadChildren: () => import('./editarcliente/editcliente.module').then(m => m.EditclientePageModule)
   },
   {
     path: 'shoppingcart',
