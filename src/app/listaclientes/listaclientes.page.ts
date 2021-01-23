@@ -56,12 +56,17 @@ export class ListaclientesPage implements OnInit {
     this.servicioCliente.getClientesCriterio(this.postData).subscribe(res => {
       console.log(res );
       this.listaClientes = res;
+
+      if (this.listaClientes.length < 1){
+        this.utilMensaje.presentarMensaje('No se encontraron clientes registrados');
+      }
+
       this.loadingService.loadingDismiss();
     }, error => {
       this.listaClientes = null;
       console.log('Error al realizar la consulta ');
       this.loadingService.loadingDismiss();
-      this.utilMensaje.presentarMensaje('Error al realizar la consulta de productos');
+      this.utilMensaje.presentarMensaje('Error al realizar la consulta de clientes');
     });
   }
 

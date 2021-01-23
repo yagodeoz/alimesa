@@ -50,6 +50,11 @@ export class ListaproductosPage implements OnInit {
     this.servicioProducto.getProductosCriterio(this.postData).subscribe(res => {
       console.log(res );
       this.listaProductos = res;
+
+      if (this.listaProductos.length < 1){
+        this.utilMensaje.presentarMensaje('No se encontraron productos registrados');
+      }
+
       this.loadingService.loadingDismiss();
     }, error => {
       this.error = JSON.stringify(error) ;
