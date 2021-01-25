@@ -25,6 +25,7 @@ export class MessagesProvider {
             titulo_menu_productos: 'Productos',
             titulo_menu_perfil: 'Mi Perfil',
             titulo_menu_clientes: 'Clientes',
+            titulo_menu_pedidos: 'Pedidos',
         };
     }
 

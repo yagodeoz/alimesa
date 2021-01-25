@@ -5,8 +5,8 @@ import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {MessagesProvider} from './messages/messages';
 import {ControlaccesologinService} from './servicios/login/controlaccesologin.service';
-import {Router} from "@angular/router";
-import {AuthenticationService} from "./servicios/authentication.service";
+import {Router} from '@angular/router';
+import {AuthenticationService} from './servicios/authentication.service';
 
 @Component({
     selector: 'app-root',
@@ -116,6 +116,7 @@ export class AppComponent implements OnInit {
     private inclusionModulos() {
         this.agregarMenuProductos();
         this.agregarMenuClientes();
+        this.agregarMenuPedidos();
     }
 
     initializeApp() {
@@ -142,6 +143,11 @@ export class AppComponent implements OnInit {
         //validar roles y demas cosas
         this.appPages.push(this.getMenuClientes());
     }
+    private agregarMenuPedidos() {
+        //validar roles y demas cosas
+        this.appPages.push(this.getMenuPedidos());
+    }
+
 
     private getMenuProductos() {
         return {
@@ -156,6 +162,14 @@ export class AppComponent implements OnInit {
             title: this.msg.get('titulo_menu_clientes'),
             url: '/listaclientes',
             icon: 'person'
+        };
+    }
+
+    private getMenuPedidos() {
+        return {
+            title: this.msg.get('titulo_menu_pedidos'),
+            url: '/pedidos',
+            icon: 'newspaper'
         };
     }
 

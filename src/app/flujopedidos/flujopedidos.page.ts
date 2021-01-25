@@ -6,11 +6,11 @@ import {ControlParametrosService} from '../servicios/transversales/control-param
 import {ClientesService} from '../servicios/ventas/clientes/clientes.service';
 
 @Component({
-  selector: 'app-listaclientes',
-  templateUrl: './listaclientes.page.html',
-  styleUrls: ['./listaclientes.page.scss'],
+  selector: 'app-flujopedidos',
+  templateUrl: './flujopedidos.page.html',
+  styleUrls: ['./flujopedidos.page.scss'],
 })
-export class ListaclientesPage implements OnInit {
+export class FlujopedidosPage implements OnInit {
 
   private postData = {
     id: '2',
@@ -56,7 +56,7 @@ export class ListaclientesPage implements OnInit {
       console.log(res );
       this.listaClientes = res;
 
-      if (this.listaClientes.length < 1){
+      if (this.listaClientes.length < 1) {
         this.utilMensaje.presentarMensaje('No se encontraron clientes registrados');
       }
 

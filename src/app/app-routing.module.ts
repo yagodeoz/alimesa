@@ -36,6 +36,10 @@ const routes: Routes = [
     loadChildren: () => import('./cliente/cliente.module').then(m => m.ClientePageModule)
   },
   {
+    path: 'pedidos',
+    loadChildren: () => import('./flujopedidos/flujopedidos.module').then(m => m.FlujopedidosPageModule)
+  },
+  {
     path: 'editcliente',
     loadChildren: () => import('./editarcliente/editcliente.module').then(m => m.EditclientePageModule)
   },
