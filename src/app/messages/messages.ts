@@ -26,6 +26,10 @@ export class MessagesProvider {
             titulo_menu_perfil: 'Mi Perfil',
             titulo_menu_clientes: 'Clientes',
             titulo_menu_pedidos: 'Pedidos',
+            titulo_menu_sucursal: 'Sucursal',
+            titulo_menu_orden_pendiente: 'Ordenes Pendientes',
+            titulo_menu_orden_dia: 'Consulta Ordenes',
+            titulo_menu_cobros: 'Cobros',
         };
     }
 

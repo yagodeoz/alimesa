@@ -42,6 +42,30 @@ export class ListaproductosPage implements OnInit {
     this.error = null;
   }
 
+
+  buscarCodigo(valor) {
+    console.log('Ejecutar Evento ' + valor );
+    this.loadingService.loadingPresent('Por favor espere');
+    this.postData.filtro.where = 'P1.PRODUCT_NAME like (\'%' + valor + '%\')';
+    console.log(this.postData);
+    this.servicioProducto.getProductosCriterio(this.postData).subscribe(res => {
+      console.log(res );
+      this.listaProductos = res;
+
+      if (this.listaProductos.length < 1){
+        this.utilMensaje.presentarMensaje('No se encontraron productos registrados');
+      }
+
+      this.loadingService.loadingDismiss();
+    }, error => {
+      this.error = JSON.stringify(error) ;
+      this.listaProductos = null;
+      console.log('Error al realizar la consulta ');
+      this.loadingService.loadingDismiss();
+      this.utilMensaje.presentarMensaje('Error al realizar la consulta de productos');
+    });
+  }
+
   buscarSearch(valor) {
     console.log('Ejecutar Evento ' + valor );
     this.loadingService.loadingPresent('Por favor espere');

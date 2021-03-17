@@ -22,6 +22,14 @@ export class ClientePage implements OnInit {
     alert('No implementado por falta de definción');
   }
 
+
+
+
+  editarLocalizcion() {
+
+    this.router.navigate(['/geolocalizacion'] );
+  }
+
   editarCliente() {
 
     this.router.navigate(['/editcliente'] );

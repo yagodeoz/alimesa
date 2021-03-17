@@ -1,0 +1,111 @@
+import { Component, OnInit } from '@angular/core';
+import {LoadingService} from '../servicios/transversales/loading.service';
+import {UtilmensajeService} from '../servicios/transversales/utilmensaje.service';
+import {Router} from '@angular/router';
+import {ControlParametrosService} from '../servicios/transversales/control-parametros.service';
+import {ClientesService} from '../servicios/ventas/clientes/clientes.service';
+
+@Component({
+  selector: 'app-cobros',
+  templateUrl: './cobros.page.html',
+  styleUrls: ['./cobros.page.scss'],
+})
+export class CobrosPage implements OnInit {
+
+  private postData = {
+    id: '2',
+    campos: {
+      CODIGO_CLIENTE: 'P1.CODIGO_CLIENTE',
+      IDENTIFICACION_FISCAL: 'P1.IDENTIFICACION_FISCAL',
+      NOMBRE_CLIENTE: 'P1.NOMBRE_CLIENTE',
+      SALESMAN: 'P1.SALESMAN',
+      PriceList: 'P1.PriceList',
+      Codigo_grupo_impuestos: 'P1.Codigo_grupo_impuestos',
+      Codigo_Giro: 'P1.Codigo_Giro',
+      DIRECCION_PRINCIPAL_1: 'P1.DIRECCION_PRINCIPAL_1',
+      TELEFONO: 'P1.TELEFONO',
+      E_MAIL: 'P1.E_MAIL',
+      ORIGIN: 'P1.ORIGIN',
+      DiasCobros: 'P1.DiasCobros',
+      DiasEntregaFacturas: 'P1.DiasEntregaFacturas',
+      LOCALIZACION_CLIENTE: 'P1.LOCALIZACION_CLIENTE'
+    },
+    filtro: {
+      where: '',
+      'order by': 'P1.CODIGO_CLIENTE desc',
+      limit: ' 10'
+    }
+  };
+
+  listaClientes: any;
+
+  constructor(private loadingService: LoadingService, private servicioCliente: ClientesService,
+              private utilMensaje: UtilmensajeService, private router: Router,
+              private controlParametros: ControlParametrosService) { }
+
+  ngOnInit() {
+    this.listaClientes = null;
+  }
+
+  crearCliente() {
+    this.router.navigate(['/crearcliente'] );
+  }
+
+  buscarClienteRF(valor) {
+    console.log('Ejecutar Evento ' + valor );
+    this.loadingService.loadingPresent('Por favor espere');
+    this.postData.filtro.where = 'P1.NOMBRE_CLIENTE like (\'%' + valor + '%\')';
+    console.log(this.postData);
+    this.servicioCliente.getClientesCriterio(this.postData).subscribe(res => {
+      console.log(res );
+      this.listaClientes = res;
+
+      if (this.listaClientes.length < 1){
+        this.utilMensaje.presentarMensaje('No se encontraron clientes registrados');
+      }
+
+      this.loadingService.loadingDismiss();
+    }, error => {
+      this.listaClientes = null;
+      console.log('Error al realizar la consulta ');
+      this.loadingService.loadingDismiss();
+      this.utilMensaje.presentarMensaje('Error al realizar la consulta de clientes');
+    });
+  }
+
+  buscarCliente(valor) {
+    console.log('Ejecutar Evento ' + valor );
+    this.loadingService.loadingPresent('Por favor espere');
+    this.postData.filtro.where = 'P1.NOMBRE_CLIENTE like (\'%' + valor + '%\')';
+    console.log(this.postData);
+    this.servicioCliente.getClientesCriterio(this.postData).subscribe(res => {
+      console.log(res );
+      this.listaClientes = res;
+
+      if (this.listaClientes.length < 1){
+        this.utilMensaje.presentarMensaje('No se encontraron clientes registrados');
+      }
+
+      this.loadingService.loadingDismiss();
+    }, error => {
+      this.listaClientes = null;
+      console.log('Error al realizar la consulta ');
+      this.loadingService.loadingDismiss();
+      this.utilMensaje.presentarMensaje('Error al realizar la consulta de clientes');
+    });
+  }
+
+
+  procesarClienteEfectivo(item) {
+    console.log(item);
+    this.controlParametros.setParametro('cliente_item', item);
+    this.router.navigate(['/cabeceracobro'] );
+  }
+
+  procesarClienteBanco(item) {
+    console.log(item);
+    this.controlParametros.setParametro('cliente_item', item);
+    this.router.navigate(['/cabeceracobrobanco'] );
+  }
+
+}

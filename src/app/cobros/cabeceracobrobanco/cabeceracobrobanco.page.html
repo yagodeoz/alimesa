@@ -1,0 +1,188 @@
+<ion-header class="osahan-nav">
+  <ion-toolbar>
+     <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+     </ion-buttons>
+     <ion-title>Cobro Banco
+     </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding my-profile-page" color="light">
+
+   <div class="mb-2 card bg-white profile-box text-center">
+      <a class="list-group-item list-group-item-action active text-left">
+         <ion-icon class="mr-2" name="person-outline"></ion-icon>
+         Datos Cliente
+      </a>
+      <div class="py-4 px-3 border-bottom datos-cliente" >
+        <p class="font-weight-bold text-dark mb-1 datos-cliente">{{item.NOMBRE_CLIENTE}}</p>
+        <p class="mb-0 text-muted">Registro Fiscal: {{item.IDENTIFICACION_FISCAL}}</p>
+     </div>
+  </div>
+   <form >
+   <div class="mb-2 card bg-white profile-box">
+      <a class="list-group-item list-group-item-action active text-left">
+         <ion-icon class="mr-2" name="clipboard"></ion-icon>
+         Datos Cobro
+      </a>
+      <div class="py-4 px-3 border-bottom datos-cliente" >
+
+         <ion-row>
+            <ion-col>
+               <ion-item>
+                  <ion-label position="stacked">
+                     No. Pago
+                     <ion-text color="danger">*</ion-text>
+                  </ion-label>
+                  <ion-input placeholder="No. Pago" required type="text" style="font-size: xx-small"
+                  ></ion-input>
+               </ion-item>
+            </ion-col>
+            <ion-col>
+               <ion-item >
+                  <ion-label position="stacked">
+                     Compra
+                     <ion-text color="danger">*</ion-text>
+                  </ion-label>
+                  <ion-input placeholder="Compra" required type="text" style="font-size: xx-small"
+                  ></ion-input>
+               </ion-item>
+            </ion-col>
+         </ion-row>
+
+          <ion-item style="margin-top: 0">
+              <ion-label position="stacked">
+                  Banco
+                  <ion-text color="danger">*</ion-text>
+              </ion-label>
+              <ion-select style="font-size: xx-small" ></ion-select>
+          </ion-item>
+
+          <ion-row>
+              <ion-col>
+                  <ion-item>
+                      <ion-label position="stacked">
+                          Cuenta
+                          <ion-text color="danger">*</ion-text>
+                      </ion-label>
+                      <ion-input placeholder="Cuenta" required type="text" style="font-size: xx-small"
+                      ></ion-input>
+                  </ion-item>
+              </ion-col>
+              <ion-col>
+                  <ion-item >
+                      <ion-label position="stacked">
+                          Cheque
+                          <ion-text color="danger">*</ion-text>
+                      </ion-label>
+                      <ion-input placeholder="Cheque" required type="text" style="font-size: xx-small"
+                      ></ion-input>
+                  </ion-item>
+              </ion-col>
+          </ion-row>
+
+          <ion-row>
+              <ion-col>
+                  <ion-item>
+                      <ion-label position="stacked">
+                          F. Venc.
+                          <ion-text color="danger">*</ion-text>
+                      </ion-label>
+                      <ion-input placeholder="F. Vencimiento" required type="text" style="font-size: xx-small"
+                      ></ion-input>
+                  </ion-item>
+              </ion-col>
+              <ion-col>
+                  <ion-item >
+                      <ion-label position="stacked">
+                          Valor Chq.
+                          <ion-text color="danger">*</ion-text>
+                      </ion-label>
+                      <ion-input placeholder="Valor Chq." required type="text" style="font-size: xx-small"
+                      ></ion-input>
+                  </ion-item>
+              </ion-col>
+          </ion-row>
+
+         <ion-row>
+            <ion-col >
+               <ion-item>
+                  <ion-label position="stacked">
+                     Efectivo
+                     <ion-text color="danger">*</ion-text>
+                  </ion-label>
+                  <ion-input placeholder="Efectivo" required type="text" style="font-size: xx-small"
+                  ></ion-input>
+               </ion-item>
+            </ion-col>
+         </ion-row>
+      </div>
+   </div>
+
+      <div class="mb-2 card bg-white profile-box">
+         <a class="list-group-item list-group-item-action active text-left"
+         (click)="levantarBusqueda()"
+         >
+            <ion-icon class="mr-2" name="cash"></ion-icon>
+            Documentos a Cancelar
+         </a>
+         <div class="py-4 px-3 border-bottom datos-cliente"  >
+
+            <ion-list>
+               <ion-item>
+                  <div class="shop-cart-right">
+                     <h4 class="font-weight-bold text-dark mb-2 price">[FACT] - 573747   </h4>
+                      <p class="mb-0 text-muted font-weight-bold" >Saldo: {{940.50 | currency}}</p>
+                      <p class="mb-0 text-muted " >Documento: 75092 Monto: {{950.00 | currency}}</p>
+                      <p class="mb-0 text-muted " >Emisión: 01/DIC/2020</p>
+                      <p class="mb-0 text-muted " >Vencimiento: 31/DIC/2020</p>
+                      <p class="mb-0 text-muted " >Días Vencido: 1 Res. Cheque: {{0.00 | currency}}</p>
+                  </div>
+                   <ion-label position="stacked">
+                       Valor a Cancelar
+                           <ion-text color="danger">*</ion-text>
+                       </ion-label>
+                       <ion-input placeholder="Valor a Cancelar" required type="text" style="font-size: xx-small"
+                       ></ion-input>
+               </ion-item>
+
+                <ion-item>
+                    <div class="shop-cart-right">
+                        <h4 class="font-weight-bold text-dark mb-2 price">[FACT] - 573748   </h4>
+                        <p class="mb-0 text-muted font-weight-bold" >Saldo: {{940.50 | currency}}</p>
+                        <p class="mb-0 text-muted " >Documento: 75092 Monto: {{950.00 | currency}}</p>
+                        <p class="mb-0 text-muted " >Emisión: 01/DIC/2020</p>
+                        <p class="mb-0 text-muted " >Vencimiento: 31/DIC/2020</p>
+                        <p class="mb-0 text-muted " >Días Vencido: 1 Res. Cheque: {{0.00 | currency}}</p>
+                    </div>
+                    <ion-label position="stacked">
+                        Valor a Cancelar
+                        <ion-text color="danger">*</ion-text>
+                    </ion-label>
+                    <ion-input placeholder="Valor a Cancelar" required type="text" style="font-size: xx-small"
+                    ></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <div class="shop-cart-right">
+                        <h4 class="font-weight-bold text-dark mb-2 price">[FACT] - 573749   </h4>
+                        <p class="mb-0 text-muted font-weight-bold" >Saldo: {{940.50 | currency}}</p>
+                        <p class="mb-0 text-muted " >Documento: 75092 Monto: {{950.00 | currency}}</p>
+                        <p class="mb-0 text-muted " >Emisión: 01/DIC/2020</p>
+                        <p class="mb-0 text-muted " >Vencimiento: 31/DIC/2020</p>
+                        <p class="mb-0 text-muted " >Días Vencido: 1 Res. Cheque: {{0.00 | currency}}</p>
+                    </div>
+                    <ion-label position="stacked">
+                        Valor a Cancelar
+                        <ion-text color="danger">*</ion-text>
+                    </ion-label>
+                    <ion-input placeholder="Valor a Cancelar" required type="text" style="font-size: xx-small"
+                    ></ion-input>
+                </ion-item>
+
+            </ion-list>
+
+         </div>
+      </div>
+   </form>
+</ion-content>

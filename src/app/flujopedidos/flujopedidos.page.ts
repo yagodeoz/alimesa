@@ -47,6 +47,28 @@ export class FlujopedidosPage implements OnInit {
     this.listaClientes = null;
   }
 
+  buscarClienteRF(valor) {
+    console.log('Ejecutar Evento ' + valor );
+    this.loadingService.loadingPresent('Por favor espere');
+    this.postData.filtro.where = 'P1.NOMBRE_CLIENTE like (\'%' + valor + '%\')';
+    console.log(this.postData);
+    this.servicioCliente.getClientesCriterio(this.postData).subscribe(res => {
+      console.log(res );
+      this.listaClientes = res;
+
+      if (this.listaClientes.length < 1) {
+        this.utilMensaje.presentarMensaje('No se encontraron clientes registrados');
+      }
+
+      this.loadingService.loadingDismiss();
+    }, error => {
+      this.listaClientes = null;
+      console.log('Error al realizar la consulta ');
+      this.loadingService.loadingDismiss();
+      this.utilMensaje.presentarMensaje('Error al realizar la consulta de clientes');
+    });
+  }
+
   buscarCliente(valor) {
     console.log('Ejecutar Evento ' + valor );
     this.loadingService.loadingPresent('Por favor espere');
@@ -73,7 +95,7 @@ export class FlujopedidosPage implements OnInit {
   procesarCliente(item) {
     console.log(item);
     this.controlParametros.setParametro('cliente_item', item);
-    this.router.navigate(['/cliente'] );
+    this.router.navigate(['/cabecerapedido'] );
   }
 
 }

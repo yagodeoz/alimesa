@@ -117,3 +117,10 @@ ion-note {
 ion-item.selected {
   --color: var(--ion-color-primary);
 }
+
+.my-custom-modal-css .modal-wrapper {
+  height: 60%;
+  top: 10%;
+  position: absolute;
+  display: block;
+}

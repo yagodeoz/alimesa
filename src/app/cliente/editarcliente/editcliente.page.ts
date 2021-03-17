@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ControlParametrosService} from "../servicios/transversales/control-parametros.service";
-import {Router} from "@angular/router";
+import {ControlParametrosService} from '../../servicios/transversales/control-parametros.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-editcliente',

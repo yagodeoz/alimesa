@@ -1,7 +1,7 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay" *ngIf="controlAcceso.getPresentarMenu()">
-      <ion-content>
+    <ion-menu contentId="main-content" type="overlay"  >
+      <ion-content *ngIf="auth.isAuthenticated()">
 
         
         <ion-list id="inbox-list" >

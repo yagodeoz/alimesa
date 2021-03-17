@@ -57,7 +57,7 @@ export class LoginPage implements OnInit {
         this.controlAcceso.getDataLogin().nombre = 'Administrador';
         this.controlAcceso.getDataLogin().email = 'admin@gmail.com';
         this.controlAcceso.setPresentarMenu(true);
-        this.auth.setLoggedIn(true);
+        this.auth.login('{usuario: "BYRON"}');
         this.router.navigateByUrl('/folder/PrincipalLogin');
       } else {
         this.utilMensaje.presentarMensaje(

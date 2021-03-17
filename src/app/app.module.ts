@@ -11,27 +11,36 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {AuthenticationService} from './servicios/authentication.service';
 import { HttpClientModule} from '@angular/common/http';
+import {AuthGuardService} from './servicios/authGuard.service';
+
+import { IonicStorageModule } from '@ionic/storage';
+import {BuecarproductospedidoPage} from './flujopedidos/buecarproductospedido/buecarproductospedido.page';
+import {BuecarproductospedidoPageModule} from './flujopedidos/buecarproductospedido/buecarproductospedido.module';
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
+  entryComponents: [BuecarproductospedidoPage],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
+    IonicStorageModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+      BuecarproductospedidoPageModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
-      MessagesProvider,
+    MessagesProvider,
+    AuthGuardService,
+    AuthenticationService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
 
-  constructor(private auth: AuthenticationService) {
+  constructor() {
   }
 
 }

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 
-import {Platform} from '@ionic/angular';
+import {MenuController, Platform} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {MessagesProvider} from './messages/messages';
@@ -28,7 +28,8 @@ export class AppComponent implements OnInit {
         private msg: MessagesProvider,
         private controlAcceso: ControlaccesologinService,
         private router: Router,
-        private auth: AuthenticationService
+        private auth: AuthenticationService,
+        public menuCtrl: MenuController
     ) {
         this.construccionMenu();
         this.initializeApp();
@@ -114,9 +115,13 @@ export class AppComponent implements OnInit {
 
 
     private inclusionModulos() {
+        this.agregarMenuSucursal();
         this.agregarMenuProductos();
         this.agregarMenuClientes();
         this.agregarMenuPedidos();
+        this.agregarCobros();
+        this.agregarOrdenPendiente();
+        this.agregarOrdenDia();
     }
 
     initializeApp() {
@@ -124,6 +129,15 @@ export class AppComponent implements OnInit {
             this.login = false;
             this.statusBar.styleDefault();
             this.splashScreen.hide();
+
+            this.auth.authState.subscribe(state => {
+                if (state) {
+                    this.router.navigate(['/folder/PrincipalLogin']);
+                } else {
+                    this.router.navigate(['login']);
+                }
+            });
+
         });
     }
 
@@ -134,9 +148,25 @@ export class AppComponent implements OnInit {
         }
     }
 
+    private agregarOrdenPendiente() {
+        //validar roles y demas cosas
+        this.appPages.push(this.getMenuOrdenPendiente());
+    }
+
+    private agregarOrdenDia() {
+        //validar roles y demas cosas
+        this.appPages.push(this.getMenuOrdenDia());
+    }
+
+
     private agregarMenuProductos() {
         //validar roles y demas cosas
         this.appPages.push(this.getMenuProductos());
+    }
+
+    private agregarMenuSucursal() {
+        //validar roles y demas cosas
+        this.appPages.push(this.getMenuSucursal());
     }
 
     private agregarMenuClientes() {
@@ -148,12 +178,32 @@ export class AppComponent implements OnInit {
         this.appPages.push(this.getMenuPedidos());
     }
 
+    private agregarCobros() {
+        //validar roles y demas cosas
+        this.appPages.push(this.getMenuCobros());
+    }
 
     private getMenuProductos() {
         return {
             title: this.msg.get('titulo_menu_productos'),
             url: '/listaproductos',
             icon: 'grid'
+        };
+    }
+
+    private getMenuOrdenDia() {
+        return {
+            title: this.msg.get('titulo_menu_orden_dia'),
+            url: '/ordendia',
+            icon: 'cart'
+        };
+    }
+
+    private getMenuOrdenPendiente() {
+        return {
+            title: this.msg.get('titulo_menu_orden_pendiente'),
+            url: '/ordenpendientes',
+            icon: 'copy'
         };
     }
 
@@ -173,6 +223,14 @@ export class AppComponent implements OnInit {
         };
     }
 
+    private getMenuCobros() {
+        return {
+            title: this.msg.get('titulo_menu_cobros'),
+            url: '/cobros',
+            icon: 'cash'
+        };
+    }
+
     private getMenuHome() {
         return {
             title: this.msg.get('titulo_menu_home'),
@@ -189,8 +247,16 @@ export class AppComponent implements OnInit {
         };
     }
 
-    cerrarSesion(){
-        this.router.navigateByUrl('');
+    getMenuSucursal() {
+        return {
+            title: this.msg.get('titulo_menu_sucursal'),
+            url: '/sucursal',
+            icon: 'link'
+        };
+    }
 
+    cerrarSesion() {
+        this.menuCtrl.toggle();
+        this.auth.logout();
     }
 }

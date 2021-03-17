@@ -1,0 +1,175 @@
+<ion-header class="osahan-nav">
+  <ion-toolbar>
+     <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+     </ion-buttons>
+     <ion-title>Crear Pedido
+     </ion-title>
+      <ion-buttons slot="primary">
+          <ion-button>
+              <ion-icon name="save"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding my-profile-page" color="light">
+
+   <div class="mb-2 card bg-white profile-box text-center">
+      <a class="list-group-item list-group-item-action active text-left">
+         <ion-icon class="mr-2" name="person-outline"></ion-icon>
+         Datos Cliente
+      </a>
+      <div class="py-4 px-3 border-bottom datos-cliente" >
+        <p class="font-weight-bold text-dark mb-1 datos-cliente">{{item.NOMBRE_CLIENTE}}</p>
+        <p class="mb-0 text-muted">Registro Fiscal: {{item.IDENTIFICACION_FISCAL}}</p>
+          <p class="mb-0 text-muted">Cupo: $500.00</p>
+     </div>
+  </div>
+   <form >
+   <div class="mb-2 card bg-white profile-box">
+      <a class="list-group-item list-group-item-action active text-left">
+         <ion-icon class="mr-2" name="clipboard"></ion-icon>
+         Pedido
+      </a>
+      <div class="py-4 px-3 border-bottom datos-cliente" >
+         <ion-item style="margin-top: 0">
+         <ion-label position="stacked">
+            L. Precio
+            <ion-text color="danger">*</ion-text>
+         </ion-label>
+         <ion-select style="font-size: xx-small" ></ion-select>
+         </ion-item>
+
+         <ion-item>
+            <ion-label position="stacked">
+               T. Pago
+               <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-select style="font-size: xx-small" ></ion-select>
+         </ion-item>
+
+         <ion-row>
+            <ion-col>
+               <ion-item>
+                  <ion-label position="stacked">
+                     Subtotal
+                     <ion-text color="danger">*</ion-text>
+                  </ion-label>
+                  <ion-input placeholder="Subtotal" required type="text" style="font-size: xx-small"
+                  ></ion-input>
+               </ion-item>
+            </ion-col>
+            <ion-col>
+               <ion-item >
+                  <ion-label position="stacked">
+                     Dscto
+                     <ion-text color="danger">*</ion-text>
+                  </ion-label>
+                  <ion-input placeholder="Desc." required type="text" style="font-size: xx-small"
+                  ></ion-input>
+               </ion-item>
+            </ion-col>
+         </ion-row>
+
+         <ion-row>
+            <ion-col>
+               <ion-item>
+                  <ion-label position="stacked">
+                     IVA
+                     <ion-text color="danger">*</ion-text>
+                  </ion-label>
+                  <ion-input placeholder="IVA" required type="text" style="font-size: xx-small"
+                  ></ion-input>
+               </ion-item>
+            </ion-col>
+            <ion-col>
+               <ion-item >
+                  <ion-label position="stacked">
+                     Neto
+                     <ion-text color="danger">*</ion-text>
+                  </ion-label>
+                  <ion-input placeholder="Neto" required type="text" style="font-size: xx-small"
+                  ></ion-input>
+               </ion-item>
+            </ion-col>
+         </ion-row>
+      </div>
+   </div>
+
+      <div class="mb-2 card bg-white profile-box">
+         <a class="list-group-item list-group-item-action active text-left"
+         (click)="levantarBusqueda()"
+         >
+            <ion-icon class="mr-2" name="add"></ion-icon>
+            Productos
+         </a>
+         <div class="py-4 px-3 border-bottom datos-cliente"  >
+
+            <ion-list>
+               <ion-item>
+                  <div class="shop-cart-right">
+                     <h6 class="font-weight-bold text-dark mb-2 price">Camarón</h6>
+                     <div class="mb-2">{{0 | currency}}</div>
+                  </div>
+                  <div class="small text-gray-500 d-flex align-items-center justify-content-between">
+                     <small class="text-secondary">{{item.idPro}}</small>
+                     <div class="input-group shop-cart-value">
+                        <span class="input-group-btn"><button disabled="disabled"   class="btn btn-sm" type="button">-</button></span>
+                        <input type="text" max="10" min="1" value="" class="form-control border-form-control form-control-sm input-number" name="quant[1]">
+                        <span class="input-group-btn"><button class="btn btn-sm" type="button">+</button>
+              </span>
+                     </div>
+                  </div>
+               </ion-item>
+               <ion-item>
+
+                     <div class="shop-cart-right">
+                        <h6 class="font-weight-bold text-dark mb-2 price">Albacora</h6>
+                        <div class="mb-2">{{0 | currency}}</div>
+                     </div>
+                     <div class="small text-gray-500 d-flex align-items-center justify-content-between">
+                        <small class="text-secondary">{{item.idPro}}</small>
+                        <div class="input-group shop-cart-value">
+                           <span class="input-group-btn"><button disabled="disabled"   class="btn btn-sm" type="button">-</button></span>
+                           <input type="text" max="10" min="1" value="" class="form-control border-form-control form-control-sm input-number" name="quant[1]">
+                           <span class="input-group-btn"><button class="btn btn-sm" type="button">+</button>
+              </span>
+                        </div>
+                     </div>
+
+               </ion-item>
+               <ion-item>
+                     <div class="shop-cart-right">
+                        <h6 class="font-weight-bold text-dark mb-2 price">Picudo</h6>
+                        <div class="mb-2">{{0 | currency}}</div>
+                     </div>
+                     <div class="small text-gray-500 d-flex align-items-center justify-content-between">
+                        <small class="text-secondary">{{item.idPro}}</small>
+                        <div class="input-group shop-cart-value">
+                           <span class="input-group-btn"><button disabled="disabled"   class="btn btn-sm" type="button">-</button></span>
+                           <input type="text" max="10" min="1" value="" class="form-control border-form-control form-control-sm input-number" name="quant[1]">
+                           <span class="input-group-btn"><button class="btn btn-sm" type="button">+</button>
+              </span>
+                        </div>
+                     </div>
+
+               </ion-item>
+
+            </ion-list>
+
+         </div>
+      </div>
+   </form>
+</ion-content>
+<ion-footer class="border-0">
+   <button [routerLink]="['/checkout']" class="btn btn-primary btn-lg fix-btn btn-block text-left" type="button">
+     <span class="float-left">
+        <ion-icon name="cart-outline"></ion-icon>
+        Crear orden pedido
+     </span>
+      <span class="float-right">
+        <strong>$00.00</strong>
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+     </span>
+   </button>
+</ion-footer>

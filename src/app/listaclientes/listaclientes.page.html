@@ -6,8 +6,8 @@
      <ion-title>Lista Clientes
      </ion-title>
       <ion-buttons  slot="primary">
-          <ion-button>
-              <ion-icon slot="icon-only" name="add"></ion-icon>
+          <ion-button (click)="crearCliente()">
+              <ion-icon slot="icon-only" name="add" ></ion-icon>
           </ion-button>
       </ion-buttons>
   </ion-toolbar>
@@ -16,6 +16,10 @@
   <ion-searchbar class="p-0 mb-2" placeholder="Buscar Nombre..."  #buscadorCliente
                  [animated]="true" (keyup.enter)="buscarCliente(buscadorCliente.value)"
   ></ion-searchbar>
+
+    <ion-searchbar class="p-0 mb-2" placeholder="Buscar registro fiscal..."  #buscadorClienteRF
+                   [animated]="true" (keyup.enter)="buscarClienteRF(buscadorClienteRF.value)"
+    ></ion-searchbar>
 
    <div *ngIf="listaClientes">
   <div (click)="procesarCliente(item)"  class="d-flex p-3 shop-cart-item bg-white mb-2"
